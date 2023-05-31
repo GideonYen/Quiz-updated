@@ -9,11 +9,13 @@ struct FailureView: View {
             .font(.title)
             .multilineTextAlignment(.center)
             .padding()
-        if pointsAchieved <= 0 {
+        if pointsAchieved < 4 {
             Text("Better up and come back you noob!")
                 .font(.subheadline)
+            Text("Try again if you got balls...")
+                .font(.system(size: 10))
         } else {
-            Text("Surprised you even went this far! Good job! 👍🏻")
+            Text("Good job! 👍🏻")
                 .font(.subheadline)
         }
         Button {
@@ -23,17 +25,19 @@ struct FailureView: View {
         } label: {
             Text("Restart if you are ready")
         }
-        .buttonBorderShape(.capsule)
-        .buttonStyle(.borderedProminent)
         .padding()
+        .background(Color.blue)
+        .foregroundColor(.white)
+        .cornerRadius(10)
         Button {
             exit(0)
         } label: {
             Text("Exit app")
         }
-        .buttonBorderShape(.capsule)
-        .buttonStyle(.bordered)
         .padding()
+        .background(Color("lightGray"))
+        .foregroundColor(.blue)
+        .cornerRadius(10)
     }
 }
 

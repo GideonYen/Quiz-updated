@@ -158,9 +158,8 @@ struct KahootView: View {
         .fullScreenCover(isPresented: $startScreen) {
             ContentView(timerStart: $isTimerRunning)
         }
-        .alert("Your answer is wrong, you noob!", isPresented: $summonFalse) {
+        .alert("Your answer is wrong, you noob!❌", isPresented: $summonFalse) {
             Button("😭", role: .cancel) {
-                points = points - 1
                 timerString = "10"
                 isTimerRunning = true
                 if index != 10 {
@@ -170,7 +169,7 @@ struct KahootView: View {
                 }
             }
         }
-        .alert("Your answer is correct, good job!", isPresented: $summonCorrect) {
+        .alert("Your answer is correct, good job!✅", isPresented: $summonCorrect) {
             Button("😁", role: .cancel) {
                 print("😁")
                 points = points + 1

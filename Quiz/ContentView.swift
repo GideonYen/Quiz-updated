@@ -19,14 +19,14 @@ struct ContentView: View {
                     .font(.system(size: 50))
                     .foregroundColor(.white)
                     .padding()
-                Text("the easiest quiz")
+                Text("Quiz")
                     .font(.largeTitle)
                     .foregroundColor(.white)
                     .multilineTextAlignment(.center)
                     .bold()
                 
-                Text("You are a noob if you get even 1 wrong")
-                
+                Text("Good luck!😉")
+                    .foregroundColor(.white)
                 Button {
                     timerStart = true
                     dismiss()
