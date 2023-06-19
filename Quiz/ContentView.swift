@@ -1,9 +1,3 @@
-//
-//  ContentView.swift
-//  Quiz
-//
-//  Created by Milind Contractor on 27/5/23.
-//
 
 import SwiftUI
 

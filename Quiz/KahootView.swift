@@ -1,9 +1,4 @@
-//
-//  KahootView.swift
-//  Quiz
-//
-//  Created by Milind Contractor on 27/5/23.
-//
+
 
 import SwiftUI
 
@@ -18,7 +13,7 @@ struct KahootView: View {
     @State var timeRunOut = false
     @State private var startTime = Date()
     @State private var timerString = "10"
-    let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+    @State var timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
     var body: some View {
         VStack {
@@ -31,9 +26,9 @@ struct KahootView: View {
                     .foregroundColor(.purple)
                     .frame(width: 100, height: 100)
                 Text(self.timerString)
+                    .bold()
                     .font(Font.system(.largeTitle))
                     .foregroundColor(.white)
-                    .bold()
                     .onReceive(timer) { _ in
                         if self.isTimerRunning {
                             let timeRemaining = Int(timerString)! - 1
@@ -153,7 +148,10 @@ struct KahootView: View {
         }
         
         .fullScreenCover(isPresented: $questionAllDone) {
-            FailureView(pointsAchieved: $points, index: $index)
+            FailureView(pointsAchieved: $points, index: $index, timer: $isTimerRunning )
+                .onAppear{
+                    isTimerRunning = false
+                }
         }
         .fullScreenCover(isPresented: $startScreen) {
             ContentView(timerStart: $isTimerRunning)

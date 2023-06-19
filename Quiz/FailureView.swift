@@ -4,12 +4,13 @@ struct FailureView: View {
     @Binding var pointsAchieved: Int
     @Binding var index: Int
     @Environment(\.dismiss) var dismiss
+    @Binding var timer: Bool
     var body: some View {
         Text("You got \(pointsAchieved) out of \(questions.count)!")
             .font(.title)
             .multilineTextAlignment(.center)
             .padding()
-        if pointsAchieved < 4 {
+        if pointsAchieved <= 4 {
             Text("Better up and come back you noob!")
                 .font(.subheadline)
             Text("Try again if you got balls...")
@@ -22,6 +23,7 @@ struct FailureView: View {
             index = 0
             pointsAchieved = 0
             dismiss()
+            timer = true
         } label: {
             Text("Restart if you are ready")
         }
